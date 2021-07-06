@@ -501,7 +501,8 @@ a:hover, a:active, a:focus {
         align-items: center;
   min-height: 100vh;
   text-align: center;
-  background: #304352;
+  /*background: #304352;*/
+  background: url('underPic.png');
   padding-top: 80px;
 }
 
