@@ -112,7 +112,7 @@ h1 {
   font-family: "Montserrat";
   font-weight:700;
   padding-bottom: 8px;
-    /*letter-spacing: 12px;*/
+  /*letter-spacing: 12px;*/
   /*text-transform: uppercase;*/
   /*padding-bottom: 30px;*/
 }
@@ -728,9 +728,6 @@ footer {
 }
 
 @media (max-width: 650px) {
-    div{
-        font-size: 3rem;
-    }
 
   h1 {
     font-size: 3rem;
