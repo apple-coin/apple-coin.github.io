@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Address</title>
+    <link rel="stylesheet" href="/layui/css/layui.css" media="all"/>
+    <script src="/layui/layui.js"></script>
+    <script src="./Apple_files/jquery.js"></script>
+    <script src="./Apple_files/web3.min.js"></script>
+</head>
+<body>
+    <table id="list" lay-filter="test"> </table>
+</body>
+<script type="text/javascript">
+    var loadIndex;
+    new Promise(function (resolve) {
+        resolve();
+    }).then(()=>{
+        layui.use(['transfer', 'layer', 'util'], function() {
+            var layer = layui.layer
+            loadIndex = layer.load({
+                shade: [0.1,'#fff'] //0.1透明度的白色背景
+            },"loading");
+        });
+        return get();
+    }).then(function (result) {
+        layui.use('table', function(){
+            var table = layui.table
+            var layer = layui.layer
+            //第一个实例
+            table.render({
+                elem: '#list'
+                ,height: 800
+                ,limit: 20
+                ,data: result
+                ,page: true //开启分页
+                ,cols: [[ //表头
+                    {title: '-', type: 'numbers', sort: true}
+                    ,{field: 'name', title: '用户名'}
+                    ,{field: 'role', title: '职位'}
+                    ,{field: 'percentage', title: '百分比'}
+                    ,{field: 'amount', title: '持有数量'}
+                    ,{field: 'address', title: '钱包地址'}
+                ]]
+            });
+            layer.close(loadIndex);
+        });
+    })
+
+
+    function GetPercent(num, total) {
+        /// <summary>
+        /// 求百分比
+        /// </summary>
+        /// <param name="num">当前数</param>
+        /// <param name="total">总数</param>
+        num = parseFloat(num);
+        total = parseFloat(total);
+        if (isNaN(num) || isNaN(total)) {
+            return "-";
+        }
+        return total <= 0 ? "0%" : (Math.round(num / total * 10000) / 100.00)+"%";
+    }
+    function getData() {
+        return  [
+            {
+                "name": "Action Kamen",
+                "role": "Founder创始人",
+                "percentage": "",
+                "amount": "00410043000000000000",
+                "address": "0x0b00d729a45ef1528cccc83b42706b6aa9b4a064",
+            },
+            {
+                "name": "Luckystar9310",
+                "role": "shareholder",
+                "percentage": "",
+                "amount": "00410043000000000000",
+                "address": "0x6df47Df6aAb12D9588a2A4AD10cBEB17D2c1F232",
+            },
+            {
+                "name": "Bee",
+                "role": "shareholder",
+                "percentage": "",
+                "amount": "00410043000000000000",
+                "address": "0xcd07cc724f5243777ec11cdd1449d99082b759ba",
+            },
+            {
+                "name": "Kleist",
+                "role": "shareholder",
+                "percentage": "",
+                "amount": "00410043000000000000",
+                "address": "0x639AE2665d7aD352f3ad2552438FAC8B213DF44c",
+            },
+            {
+                "name": "TheCat_K",
+                "role": "shareholder",
+                "percentage": "",
+                "amount": "00410043000000000000",
+                "address": "0xAD87Fba03e2B196Df6C7DcB7a168f34fE6a44f7f",
+            },
+            {
+                "name": "雪花羔",
+                "role": "shareholder",
+                "percentage": "",
+                "amount": "00410043000000000000",
+                "address": "0xe6585ff1eec58403b5fc3e0325b7473f439b164d",
+            },
+            {
+                "name": "币圈小萝莉",
+                "role": "Youtube首席形象大使",
+                "percentage": "",
+                "amount": "00410043000000000000",
+                "address": "0xc8a84e3289520cf30c8f1288078ef0b0a3494035",
+            },
+            {
+                "name": "Time",
+                "role": "shareholder",
+                "percentage": "",
+                "amount": "00410043000000000000",
+                "address": "0xFfa08a4740116A2282892Cd7E3dF019EEFfB26B0",
+            },
+            {
+                "name": "Chris",
+                "role": "shareholder",
+                "percentage": "",
+                "amount": "00410043000000000000",
+                "address": "0x3c0bfe9dc1c19272d34f42afa3880b773a5f278b",
+            },
+            {
+                "name": "OMG",
+                "role": "shareholder",
+                "percentage": "",
+                "amount": "00410043000000000000",
+                "address": "0x212a53a08baf1683fba16392784038c017bf1481",
+            },
+            {
+                "name": "LESPEI - Lawrence",
+                "role": "shareholder",
+                "percentage": "",
+                "amount": "00410043000000000000",
+                "address": "0xD7D8f69572e966776459Eb13eCD9d26BFa8ADaE5",
+            },
+            {
+                "name": "老吴",
+                "role": "shareholder",
+                "percentage": "",
+                "amount": "00410043000000000000",
+                "address": "0xe2b817aae76437ff6e2fda23a4d7f82ed0841ca4",
+            },
+            {
+                "name": "brant lai",
+                "role": "shareholder",
+                "percentage": "",
+                "amount": "00410043000000000000",
+                "address": "0xf656E6dE5d4f23E872b3e2453A9cbaC4558C9D1b",
+            },
+            {
+                "name": "大秦府火锅",
+                "role": "shareholder",
+                "percentage": "",
+                "amount": "00410043000000000000",
+                "address": "0xA73eFcD5acE86824805D3beC9AAf111eC821Fa1b",
+            },
+            {
+                "name": "哥勋",
+                "role": "shareholder",
+                "percentage": "",
+                "amount": "00410043000000000000",
+                "address": "0x928a3f61ca8115412ede3e292d3397f931772546",
+            },
+            {
+                "name": "SoleYui",
+                "role": "shareholder",
+                "percentage": "",
+                "amount": "00410043000000000000",
+                "address": "0x68e23015b7558e73efe3cc11e9b2b22f4965085b",
+            },
+            {
+                "name": "毒气罩",
+                "role": "technical",
+                "percentage": "",
+                "amount": "00410043000000000000",
+                "address": "0x5C8888711B40cAA102E4DC721aFe7067F3Ffa857",
+            },
+            {
+                "name": "Mao Mi",
+                "role": "shareholder",
+                "percentage": "",
+                "amount": "00410043000000000000",
+                "address": "0x76557BFEBbff953FE3a99650A40243b561480151",
+            },
+        ]
+    }
+    async function get(){
+        // 实例化web3
+        const web3 = new Web3("https://bsc-dataseed1.binance.org/");
+        const appABI=[{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"spender","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Transfer","type":"event"},{"constant":true,"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"spender","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"subtractedValue","type":"uint256"}],"name":"decreaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"getOwner","outputs":[{"internalType":"address","name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"addedValue","type":"uint256"}],"name":"increaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"renounceOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"sender","type":"address"},{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}]
+        const appContact = "0x5940479698386fcBDfef382767a90b31850C86f0";
+        const appcontract = new web3.eth.Contract(appABI, appContact)
+        var userList = getData();
+        for(var i in userList){
+            await appcontract.methods.balanceOf(userList[i].address).call().then(function(r){
+                // console.log('show the custom account balance:');
+                //console.log("账户余额:" + parseInt(r/Math.pow(10,18)))
+                var appNum = parseInt(r/Math.pow(10,18));
+                userList[i].amount = appNum;
+                userList[i].percentage = GetPercent(appNum, 88888888);
+            })
+        }
+        return userList;
+    }
+</script>
+<script type="text/javascript">
+
+</script>
+</html>
